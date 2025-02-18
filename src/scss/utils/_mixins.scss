@@ -1,3 +1,52 @@
+@use "sass:map";
+@use "variables.scss" as *;
+//міксин для додавання медіазапитів  для адаптивних сторінок
+
+$breakpoints: (
+  "sm": $sm,
+  "md": $md,
+  "lg": $lg,
+  "xl": $xl,
+  "xxl": $xxl,
+) !default;
+
+@mixin mq($bp: sm, $type: min, $is-retina: false) {
+  @if map.has-key($breakpoints, $bp) {
+    $width: map-get($breakpoints, $bp);
+
+    @if $type == max {
+      $width: $width - 0.02px;
+    }
+
+    @media only screen and (#{$type}-width: $width) {
+      @if $is-retina {
+        @media (min-device-pixel-ratio: 2),
+          (min-resolution: 192dpi),
+          (min-resolution: 2dppx) {
+          @content;
+        }
+      } @else {
+        @content;
+      }
+    }
+  }
+}
+
+// --------------------usage
+// @use "utils/_mixins.scss" as m;
+
+// .poster {
+//   @include m.mq($bp: md, $type: max, $is-retina: true) {
+//     background-image: url('../images/image_@2x.jpg');
+//   }
+// }
+
+// .box {
+//  @include m.mq($bp: xl) {
+//     display: flex;
+//   }
+// }
+
 // Міскин для керуванням властивостями флекс контейнера
 // Використовується у файлі _flex.scss
 @mixin flex-center($is-column: false) {
