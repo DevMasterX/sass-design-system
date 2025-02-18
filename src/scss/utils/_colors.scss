@@ -1,14 +1,6 @@
+@use "variables" as *;
 // Перелік кольорів
 $colors: (
-  "gray100": $gray100,
-  "gray200": $gray200,
-  "gray300": $gray300,
-  "gray400": $gray400,
-  "gray500": $gray500,
-  "gray600": $gray600,
-  "gray700": $gray700,
-  "gray800": $gray800,
-  "gray900": $gray900,
   "primary": $primary,
   "success": $success,
   "info": $info,
@@ -16,6 +8,11 @@ $colors: (
   "danger": $danger,
   "light": $light,
   "dark": $dark,
+  "gray": $gray,
+  "bg-secondary-1": $bg-secondary-1,
+  "bg-secondary-2": $bg-secondary-2,
+  "text-primary-1": $text-primary-1,
+  "text-primary-2": $text-primary-2,
   "white": $white,
   "black": $black,
 );
@@ -27,7 +24,7 @@ $colors: (
     color: $color;
   }
 
-  // колір фону
+  // колір фона
   .bg-#{$name} {
     background-color: $color;
   }
